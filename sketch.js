@@ -31,8 +31,18 @@ var createScene = function () {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    var newsphere = createSphere(0, 1, 0, 2);
-    newsphere.material = hexMat('#ff0000');
+    var newBox = createBox(0, 1, 0, 2,2,2);
+    newBox.material = hexMat('#ff0000');
+
+    // var ufo = new meshModel('./ufo.glb', 1)
+
+    var anim1 = {subj: newBox.rotate, prop: 'x', val: Math.sin(Math.PI)};
+    var anim2 = {subj: newBox.position, prop: 'y', val:Math.cos(Math.PI)};
+    // var anim3 = {subj: newBox.position, prop: 'x', val:-3};
+    anims = [anim1, anim2]
+    animate(anims, scene, 5, true)
+    
+   
 
     // Our built-in 'ground' shape.
     var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
